@@ -1,0 +1,5 @@
+#!/bin/bash
+export NBGITPULLER_PARENTPATH="."
+echo 'export NBGITPULLER_PARENTPATH="."' >> ~/.bashrc
+pip install nbgitpuller
+

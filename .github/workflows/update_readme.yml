@@ -1,0 +1,27 @@
+name: Update README
+
+on:
+  create:
+  workflow_dispatch:
+
+jobs:
+  # Set the job key. The key is displayed as the job name
+  # when a job name is not provided
+  update_templates:
+    # Name the Job
+    name: Update templates
+    # Set the type of machine to run on
+    runs-on: ubuntu-latest
+    steps:
+      # Checks out a copy of your repository on the ubuntu-latest machine
+      - name: "📥  Fetching Repository Contents"
+        uses: actions/checkout@v2
+
+      - name: "💫 Replace Envs"
+        uses: franzbischoff/replace_envs@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          from_file: 'README.md'
+          to_file: 'README.md'
+          commit: 'true'
